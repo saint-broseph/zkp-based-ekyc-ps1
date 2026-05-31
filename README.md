@@ -21,3 +21,25 @@ This repository contains the core cryptography, smart contracts, and client arch
 
 ## 📂 Academic Logs
 For detailed daily progress, theoretical breakdowns, and mathematical proofs, refer to the [Docs Directory](./docs/).
+
+## 🗂️ Repository Structure
+
+```text
+zkp-ekyc-core/
+│
+├── docs/                      # Academic research, diagrams, and daily logs
+│   ├── daily_logs/            # Chronological LaTeX reports for PS-1 grading
+│   ├── literature/            # Synthesized reviews of ZKP academic papers
+│   └── architecture/          # Flowcharts and system design specifications
+│
+├── circuits/                  # Zero-Knowledge cryptography logic
+│   ├── examples/              # Baseline constraint experiments (Sum, Basic Age)
+│   └── src/                   # Final e-KYC circuits (Poseidon Hash, Merkle Trees)
+│
+├── contracts/                 # EVM-compatible Smart Contracts
+│   ├── verifier.sol           # On-chain SNARK proof validator
+│   └── test/                  # Contract deployment and logic tests
+│
+└── client/                    # Frontend Architecture (WASM integration)
+    ├── public/
+    └── src/                   # Local proof generation UI
