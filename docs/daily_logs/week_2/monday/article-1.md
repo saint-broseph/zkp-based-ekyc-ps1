@@ -19,7 +19,7 @@ Where $A$, $B$, and $C$ are linear combinations of the circuit's signals. If a c
                  ├───► [ 32-bit Bit-Decomposition ] ──► [ Enforce: a > 10 ] ──► (Constraint: Must be 1)
                  │
                  └───► [ Poseidon Hash Function ] ──────────────────────────► [ Public Output: b ]
-
+```
 ## 🧠 Deep-Dive: Signals vs. Constraints
 
 The mechanics of Circom development rely on an absolute division between two computational phases: **Witness Computation** and **Constraint Generation**.
@@ -43,7 +43,7 @@ The original article provides a basic reference conceptual circuit containing st
 signal largerThanTen;
 largerThanTen <-- a > 10; // 1. Non-linear assignment outside R1CS
 largerThanTen === 1;      // 2. Weak isolated constraint
-
+```
 ### The Security Flaws Explained:
 1. **Field Arithmetic Limitations:** Direct utilization of the `>` operator inside a field assignment evaluates correctly only for localized calculations. Without bit-decomposition, numbers can wrap around the large prime field modulus ($p \approx 2^{254}$), allowing a malicious prover to pass invalid inputs that still satisfy the constraint.
 2. **Template Instantiation Mismatch:** The code references mismatched component names (`LargerThanTen` vs `SumLargerThanTen`), breaking standard parser engines.
@@ -57,7 +57,7 @@ component comp = GreaterThan(32); // Allocates a 32-bit bit-slice comparator
 comp.in[0] <== a;
 comp.in[1] <== 10;
 comp.out === 1;                   // Cryptographically locks the comparison state
-
+```
 ## 🛠️ Local Verification Pipeline
 
 The fully functional code is located in the examples directory. It maps a private value, guarantees it exceeds the baseline threshold of 10, and outputs a secure Poseidon hash:
@@ -75,6 +75,7 @@ circom larger.circom --r1cs --wasm --sym -l node_modules
 node larger_js/generate_witness.js larger_js/larger.wasm input.json witness.wtns
 npx snarkjs groth16 prove larger_final.zkey witness.wtns proof.json public.json
 npx snarkjs groth16 verify verification_key.json public.json proof.json
-
+```
 ```text
 [INFO] snarkJS: OK!
+```
