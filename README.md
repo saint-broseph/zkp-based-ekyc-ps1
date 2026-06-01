@@ -6,6 +6,15 @@
 
 > A decentralized, zero-knowledge proof identity verification protocol anchoring Indian KYC infrastructure (DigiLocker) to EVM-compatible blockchains. 
 
+---
+
+## 📈 PS-1 Continuous Evaluation & Grading Logs
+> ⚠️ **For University Reviewers & Evaluators:** To track granular progress, chronological timelines, domain transitions, and daily technical breakthroughs, a comprehensive, week-by-week master file is maintained directly in the root directory.
+> 
+> 👉 **View the complete academic milestones here: [PROGRESS.md](./PROGRESS.md)**
+
+---
+
 ## 📖 Overview
 This repository contains the core cryptography, smart contracts, and client architecture developed during a 7-week research phase at CDAC Pune. The system allows users to mathematically prove demographic eligibility (e.g., Age $\ge$ 18) without transmitting personally identifiable information (PII).
 
@@ -27,6 +36,7 @@ For detailed daily progress, theoretical breakdowns, and mathematical proofs, re
 ```text
 zkp-ekyc-core/
 │
+├── PROGRESS.md                # Master week-by-week progress log for university evaluation
 ├── docs/                      # Academic research, diagrams, and daily logs
 │   ├── daily_logs/            # Chronological LaTeX reports for PS-1 grading
 │   ├── literature/            # Synthesized reviews of ZKP academic papers
