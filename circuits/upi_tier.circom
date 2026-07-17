@@ -1,7 +1,7 @@
 // ================================================================
 // PROJECT      : ZKProof-UPI
 // FILE         : circuits/upi_kyc_full.circom
-// VERSION      : 2.0.0
+// VERSION      : 2.1.6
 // DESCRIPTION  : Complete Zero-Knowledge Proof circuit system
 //                for UPI Multi-Tier KYC Eligibility Verification
 //
@@ -48,7 +48,7 @@
 // AUTHOR  : ZKProof-UPI Team, C-DAC Pune PS1
 // ================================================================
 
-pragma circom 2.0.0;
+pragma circom 2.1.6;
 
 // ---- circomlib imports ----
 include "circomlib/circuits/comparators.circom";
