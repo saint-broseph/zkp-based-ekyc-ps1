@@ -122,19 +122,19 @@ The system spans three trust domains: an off-chain **issuance layer**, an on-dev
 **proving layer**, and an on-chain **verification/state layer**.
 
 ```
- ┌────────────────────┐        σ (signed credential)        ┌──────────────────────┐
- │  Issuer (Bank /     │ ───────────────────────────────────▶│  User Device (PWA)   │
- │  RBI-regulated RE)  │                                      │  - IndexedDB (AES-   │
- │  builds Merkle tree,│                                      │    256-GCM) + WebAuthn│
- │  signs root (EdDSA) │◀──── insertLeaf(N_c) on revocation ──│  - snarkjs WASM prover│
- └────────────────────┘                                      └───────────┬──────────┘
+ ┌─────────────────────┐        σ (signed credential)          ┌───────────────────────┐
+ │  Issuer (Bank /     │ ───────────────────────────────────▶ │  User Device (PWA)    │
+ │  RBI-regulated RE)  │                                       |  - IndexedDB (AES-    │
+ │  builds Merkle tree,│                                       │    256-GCM) + WebAuthn│
+ │  signs root (EdDSA) │◀──── insertLeaf(N_c) on revocation ── │ - snarkjs WASM prover│
+ └─────────────────────┘                                       └──────────┬────────────┘
                                                                           │ π (1.5 KB proof)
                                                                           ▼
- ┌────────────────────┐   UserOperation    ┌──────────────┐   verifyProof()   ┌───────────────┐
- │  PSP / UPI App      │ ─────────────────▶│  ERC-4337     │─────────────────▶│  Verifier.sol  │
+ ┌─────────────────────┐   UserOperation    ┌───────────────┐   verifyProof()   ┌────────────────┐
+ │  PSP / UPI App      │ ─────────────────▶│ ERC-4337      │─────────────────▶ │  Verifier.sol  │
  │  (deep-link + nonce)│                    │  Bundler +    │                   │  + SMTRegistry │
- └────────────────────┘                    │  Paymaster    │                   │  (Sepolia)     │
-                                            └──────────────┘                   └───────┬────────┘
+ └─────────────────────┘                    │  Paymaster    │                   │  (Sepolia)     │
+                                            └───────────────┘                   └───────┬────────┘
                                                                                         │
                                                                           emit KYCTierVerified
                                                                         (PMLA-compliant audit log)
@@ -272,7 +272,6 @@ World — is in
 │   └── index.ts
 │
 ├── docs/
-│   ├── daily_logs/              # Development log / progress notes
 │   └── literature/               # Background reading, related-work material
 │
 ├── .agents/skills/ , .claude/skills/   # Local AI-agent tooling skills (hardhat, hardhat-toolbox-mocha-ethers)
@@ -281,8 +280,6 @@ World — is in
 ├── package.json / package-lock.json
 ├── tsconfig.json
 ├── AGENTS.md
-├── CLAUDE.md
-├── PROGRESS.md
 ├── README.md                    # ← you are here
 │
 ├── Privacy-Preserving UPI Payment Tier Eligibility using ZKPs.pdf   # Full research paper
@@ -467,9 +464,7 @@ produce an accepting proof.
 - **Full paper:** [`Privacy-Preserving UPI Payment Tier Eligibility using Zero-Knowledge Proofs...pdf`](./Privacy-Preserving_UPI_Payment_Tier_Eligibility_using_Zero_Knowledge_Proofs_A_Multi_Predicate_ZKProof_eKYC_Framework_for_India_s_Payment_Infrastructure.pdf)
 - **Regulatory mapping reference:** [`Regulatory Frameworks for Multi-Tier KYC for UPI.pdf`](./Regulatory_Frameworks_for_Multi-Tier_KYC_for_UPI.pdf)
 - **Slides:** `ZKP_eKYC_UPI_Slides.pdf`
-- **Development log:** [`docs/daily_logs/`](docs/daily_logs/)
-- **Background reading:** [`docs/literature/`](docs/literature/)
-- **Progress tracker:** [`PROGRESS.md`](./PROGRESS.md)
+
 
 ## Authors
 
